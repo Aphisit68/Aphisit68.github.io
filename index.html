@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ครบรอบของเรา 💕</title>
+<link rel="icon" type="image/jpeg" href="e/e4.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF6FA5;
+    --pink-deep:#E84393;
+    --orange:#FFB05C;
+    --yellow:#FFD93D;
+    --purple:#B98CFF;
+    --mint:#5CE1C4;
+    --cream:#FFF8F0;
+    --ink:#3A2E39;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Kanit', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  .bg-blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.35;
+    z-index:0;
+    pointer-events:none;
+  }
+  .blob1{width:420px;height:420px;background:var(--pink);top:-120px;left:-120px;}
+  .blob2{width:380px;height:380px;background:var(--yellow);bottom:-100px;right:-100px;}
+  .blob3{width:300px;height:300px;background:var(--mint);top:40%;left:60%;}
+
+  section{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:60px 24px;
+    text-align:center;
+  }
+
+  /* HERO */
+  #hero{gap:18px;}
+  .eyebrow{
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    color:var(--pink-deep);
+    background:#fff;
+    padding:8px 20px;
+    border-radius:999px;
+    box-shadow:0 6px 0 rgba(232,67,147,.15);
+    font-size:15px;
+    letter-spacing:.5px;
+    animation:pop-in .6s ease;
+  }
+  h1.title{
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:clamp(38px,9vw,68px);
+    line-height:1.1;
+    background:linear-gradient(90deg,var(--pink-deep),var(--orange) 45%,var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:pop-in .8s ease .1s both;
+  }
+  .subtitle{
+    font-size:clamp(15px,3.6vw,19px);
+    color:#6b5a66;
+    max-width:480px;
+    animation:pop-in .8s ease .2s both;
+  }
+  .hearts-row{font-size:28px; animation:float 3s ease-in-out infinite; margin-top:6px;}
+  .counter-card{
+    margin-top:22px;
+    background:#fff;
+    border-radius:28px;
+    padding:22px 30px;
+    box-shadow:0 14px 0 rgba(255,111,165,.18), 0 14px 30px rgba(0,0,0,.06);
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+    animation:pop-in .8s ease .3s both;
+  }
+  .counter-item{min-width:64px;}
+  .counter-num{
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:clamp(26px,6vw,36px);
+    color:var(--pink-deep);
+  }
+  .counter-label{font-size:12px; color:#9a8a95; margin-top:2px;}
+  .scroll-hint{
+    position:absolute;
+    bottom:28px;
+    font-size:13px;
+    color:#b09ba8;
+    animation:bounce 1.8s infinite;
+  }
+
+  @keyframes pop-in{
+    from{opacity:0; transform:translateY(18px) scale(.96);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(6px);}
+  }
+
+  /* SECTION HEADERS */
+  .section-eyebrow{
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    color:var(--purple);
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .section-title{
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:clamp(28px,6vw,42px);
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .section-desc{
+    color:#7a6a75;
+    max-width:460px;
+    font-size:15px;
+    margin-bottom:36px;
+  }
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    max-width:520px;
+    width:100%;
+  }
+  @media(min-width:640px){
+    .gallery-grid{grid-template-columns:repeat(3,1fr); max-width:700px;}
+  }
+  @media(min-width:860px){
+    .gallery-grid{grid-template-columns:repeat(4,1fr); max-width:920px;}
+  }
+  .polaroid{
+    background:#fff;
+    padding:10px 10px 34px;
+    border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,.10);
+    transform:rotate(var(--r));
+    transition:transform .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .polaroid:nth-child(1){--r:-6deg;}
+  .polaroid:nth-child(2){--r:4deg;}
+  .polaroid:nth-child(3){--r:-3deg;}
+  .polaroid:nth-child(4){--r:5deg;}
+  .polaroid:nth-child(5){--r:-5deg;}
+  .polaroid:nth-child(6){--r:3deg;}
+  .polaroid:hover{transform:rotate(0deg) scale(1.05); box-shadow:0 16px 30px rgba(0,0,0,.16); z-index:5;}
+  .polaroid .frame{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:6px;
+    background:linear-gradient(135deg,var(--frame-a),var(--frame-b));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:34px;
+    overflow:hidden;
+  }
+  .polaroid .frame img{width:100%; height:100%; object-fit:cover; display:none;}
+  .polaroid:nth-child(1) .frame{--frame-a:#FFE1EC; --frame-b:#C9F0B8;} /* ดอกไม้: ชมพู→เขียวใบไม้ */
+  .polaroid:nth-child(2) .frame{--frame-a:#FFD9A0; --frame-b:#FF9B6A;} /* อาหาร: ส้มอุ่น */
+  .polaroid:nth-child(3) .frame{--frame-a:#BFEFFF; --frame-b:#5CC7E8;} /* ทะเล: ฟ้าคราม */
+  .polaroid:nth-child(4) .frame{--frame-a:#E3D3FF; --frame-b:#C5A6FF;}
+  .polaroid:nth-child(5) .frame{--frame-a:#FFD8B0; --frame-b:#FFB88A;}
+  .polaroid:nth-child(6) .frame{--frame-a:#FFC9DE; --frame-b:#FF9FC7;}
+  .polaroid .cap{
+    position:absolute;
+    bottom:8px; left:0; right:0;
+    text-align:center;
+    font-family:'Baloo 2',cursive;
+    font-size:12.5px;
+    color:#8a7a85;
+  }
+  .tape{
+    position:absolute; top:-10px; left:50%;
+    transform:translateX(-50%) rotate(-3deg);
+    width:46px; height:18px;
+    background:rgba(255,217,61,.7);
+    border:1px solid rgba(255,217,61,.9);
+  }
+  .polaroid{cursor:pointer;}
+
+  /* ===== ALBUM MODAL ===== */
+  .album-modal{
+    position:fixed; inset:0; z-index:2000;
+    display:none;
+    flex-direction:column;
+    background:linear-gradient(160deg,#F1E5FF,#F7EEFF 45%,#FFF8F0 100%);
+    overflow:hidden;
+  }
+  .album-modal.show{display:flex;}
+  .album-topbar{
+    display:flex; align-items:center; justify-content:flex-end;
+    padding:16px 18px;
+    flex-shrink:0;
+  }
+  .album-topbtns{display:flex; gap:10px;}
+  .album-icon-btn{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,.7);
+    color:var(--ink);
+    font-size:17px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(185,140,255,.25);
+    transition:background .2s, transform .2s;
+  }
+  .album-icon-btn:hover{background:#fff; transform:scale(1.06);}
+  .album-icon-btn:active{transform:scale(.92);}
+  .album-icon-btn.wide{
+    width:auto;
+    min-width:38px;
+    padding:0 10px;
+    font-size:14px;
+    gap:2px;
+  }
+
+  .album-stage{
+    flex:1;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:56px 20px;
+    overflow:hidden;
+    touch-action:pan-x;
+  }
+  .album-photo-card{
+    width:min(74vw,320px);
+    aspect-ratio:4/5;
+    background:#fff;
+    border-radius:10px;
+    padding:16px 16px 22px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:12px;
+    box-shadow:0 18px 38px rgba(120,80,160,.22);
+    animation:album-photo-in .35s ease;
+    position:relative;
+    transform:rotate(var(--tilt,-2deg));
+  }
+  .album-photo-card::before{
+    content:none;
+  }
+  .album-title-badge{
+    position:absolute;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#FFF9F3;
+    color:#8a5a6e;
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    font-size:12.5px;
+    padding:7px 20px;
+    white-space:nowrap;
+    z-index:6;
+    letter-spacing:.6px;
+    box-shadow:0 6px 14px rgba(120,80,160,.16);
+    animation:badge-fade-in .45s ease;
+  }
+  .album-title-badge::before,
+  .album-title-badge::after{
+    content:"";
+    position:absolute;
+    top:100%;
+    border-style:solid;
+    border-width:5px;
+  }
+  .album-title-badge::before{
+    left:0;
+    border-color:#EAD6C4 #EAD6C4 transparent transparent;
+    border-right-color:transparent;
+  }
+  .album-title-badge::after{
+    right:0;
+    border-color:#EAD6C4 transparent transparent #EAD6C4;
+    border-left-color:transparent;
+  }
+  @keyframes badge-fade-in{
+    0%{opacity:0; transform:translateX(-50%) translateY(-6px);}
+    100%{opacity:1; transform:translateX(-50%) translateY(0);}
+  }
+  .album-photo-frame{
+    width:100%;
+    flex:1;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  @keyframes album-photo-in{
+    0%{opacity:0; transform:translateY(24px) rotate(var(--tilt,-2deg));}
+    100%{opacity:1; transform:translateY(0) rotate(var(--tilt,-2deg));}
+  }
+  .album-photo-card img{width:100%; height:100%; object-fit:cover; border-radius:6px; display:none;}
+  .album-photo-emoji{font-size:46px; filter:drop-shadow(0 6px 10px rgba(0,0,0,.15));}
+  .album-photo-caption{
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    color:#6a5762;
+    font-size:16px;
+    text-align:center;
+    outline:none;
+    border-radius:6px;
+    padding:4px 8px;
+    min-width:60px;
+    cursor:text;
+    transition:background .2s;
+  }
+  .album-photo-caption:hover{background:rgba(185,140,255,.08);}
+  .album-photo-caption:focus{background:rgba(185,140,255,.14);}
+  .album-caption-hint{
+    font-family:'Kanit',sans-serif;
+    font-weight:500;
+    color:var(--pink-deep);
+    font-size:11.5px;
+    text-align:center;
+    background:#fff;
+    padding:7px 14px;
+    border-radius:999px;
+    box-shadow:0 6px 14px rgba(120,80,160,.2);
+    position:relative;
+    margin-top:6px;
+  }
+  .album-caption-hint::before{
+    content:"";
+    position:absolute;
+    top:-7px; left:50%;
+    transform:translateX(-50%);
+    width:0; height:0;
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-bottom:7px solid #fff;
+  }
+  .album-nav-btn{
+    position:absolute;
+    width:40px; height:40px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,.7);
+    color:#000;
+    font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(120,80,160,.2);
+    transition:background .2s, transform .2s;
+    z-index:5;
+  }
+  .album-nav-btn:hover{background:#fff;}
+  .album-nav-btn.prev{top:6px; left:50%; transform:translateX(-50%);}
+  .album-nav-btn.next{bottom:6px; left:50%; transform:translateX(-50%);}
+
+  .album-dots{
+    display:flex; justify-content:center; align-items:center;
+    gap:6px;
+    padding:14px 20px 26px;
+    flex-shrink:0;
+    flex-wrap:wrap;
+  }
+  .album-dot{
+    width:6px; height:6px; border-radius:50%;
+    background:rgba(0,0,0,.25);
+    transition:all .25s;
+  }
+  .album-dot.active{background:#000; width:18px; border-radius:4px;}
+
+  .album-heart{
+    position:absolute;
+    bottom:-30px;
+    pointer-events:none;
+    z-index:3;
+    animation:album-float linear forwards;
+  }
+  @keyframes album-float{
+    0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+    12%{opacity:.9;}
+    88%{opacity:.6;}
+    100%{transform:translateY(-92vh) translateX(var(--drift)) rotate(var(--spin)); opacity:0;}
+  }
+
+
+  /* LETTER */
+  .letter-card{
+    background:#fff;
+    max-width:520px;
+    width:100%;
+    border-radius:26px;
+    padding:36px 30px;
+    box-shadow:0 16px 0 rgba(185,140,255,.15), 0 16px 32px rgba(0,0,0,.06);
+    text-align:left;
+    position:relative;
+  }
+  .letter-card::before{
+    content:"💌";
+    position:absolute;
+    top:-22px; left:24px;
+    font-size:38px;
+    filter:drop-shadow(0 6px 6px rgba(0,0,0,.12));
+  }
+  .letter-body{
+    font-size:15.5px;
+    line-height:1.9;
+    color:#4a3d46;
+    white-space:pre-line;
+  }
+  .letter-sign{
+    margin-top:20px;
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    color:var(--pink-deep);
+    text-align:right;
+  }
+
+  /* FOOTER */
+  #footer{min-height:60vh; gap:14px;}
+  .footer-emoji{font-size:44px; animation:float 3s ease-in-out infinite;}
+  .footer-note{color:#8a7a85; font-size:14px; max-width:340px;}
+
+  ::selection{background:var(--yellow); color:var(--ink);}
+
+  /* LOCK SCREEN */
+  #lockscreen{
+    position:fixed; inset:0; z-index:999;
+    background:linear-gradient(135deg,#FFD3E0,#FFE9B0 45%,#C9F5E8 100%);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px;
+    padding:24px; text-align:center;
+    transition:opacity .5s ease, visibility .5s ease;
+    overflow:hidden;
+  }
+  #lockscreen.hidden{opacity:0; visibility:hidden; pointer-events:none;}
+  .lock-card{
+    background:#fff;
+    border-radius:28px;
+    padding:36px 28px;
+    max-width:360px;
+    width:100%;
+    box-shadow:0 16px 0 rgba(255,111,165,.18), 0 16px 34px rgba(0,0,0,.08);
+    position:relative;
+  }
+  .lock-emoji{font-size:44px; margin-bottom:6px; animation:float 3s ease-in-out infinite;}
+  .lock-title{
+    font-family:'Baloo 2',cursive; font-weight:800;
+    font-size:22px; color:var(--pink-deep); margin-bottom:6px;
+  }
+  .lock-desc{font-size:13.5px; color:#8a7a85; margin-bottom:18px;}
+  .lock-input{
+    width:100%;
+    font-family:'Baloo 2',cursive;
+    font-size:20px;
+    text-align:center;
+    letter-spacing:2px;
+    padding:14px 10px;
+    border-radius:16px;
+    border:2px solid #FFD3E0;
+    outline:none;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .lock-input:focus{border-color:var(--pink);}
+  .lock-hint{font-size:11.5px; color:#c0aab4; margin-bottom:18px;}
+  .lock-error{
+    font-size:13px; color:var(--pink-deep); font-weight:600;
+    min-height:18px; margin-bottom:6px;
+  }
+  .lock-btn-row{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+  }
+  .lock-submit{
+    font-family:'Baloo 2',cursive; font-weight:700;
+    font-size:15px; color:#fff;
+    background:linear-gradient(90deg,var(--pink-deep),var(--pink));
+    border:none; border-radius:999px;
+    padding:13px 26px;
+    cursor:pointer;
+    box-shadow:0 6px 0 rgba(232,67,147,.3);
+  }
+  .lock-submit:active{transform:translateY(3px); box-shadow:0 3px 0 rgba(232,67,147,.3);}
+  .lock-reveal{
+    font-family:'Kanit',sans-serif; font-weight:500;
+    font-size:13px; color:#9a8a95;
+    background:#fff8f0;
+    border:2px dashed #FFD3E0; border-radius:999px;
+    padding:13px 20px;
+    cursor:pointer;
+    transition:top .22s ease, left .22s ease;
+    z-index:1001;
+  }
+  .lock-reveal.dodging{
+    position:fixed;
+  }
+  .shake{animation:shake .8s ease;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-8px);}
+    40%{transform:translateX(8px);}
+    60%{transform:translateX(-6px);}
+    80%{transform:translateX(6px);}
+  }
+
+  /* UNLOCK SUCCESS ANIMATION */
+  .lock-success{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .lock-success.show{
+    display:flex;
+    animation:pop-in .5s ease;
+  }
+  .lock-success .success-emoji{
+    font-size:52px;
+    animation:success-spin .7s ease;
+  }
+  .lock-success .success-text{
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:20px;
+    color:var(--pink-deep);
+  }
+  @keyframes success-spin{
+    0%{transform:scale(.3) rotate(-20deg); opacity:0;}
+    60%{transform:scale(1.15) rotate(8deg); opacity:1;}
+    100%{transform:scale(1) rotate(0deg);}
+  }
+  .lock-card.unlocking{
+    animation:card-pulse .5s ease;
+  }
+  @keyframes card-pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.06);}
+    100%{transform:scale(1);}
+  }
+  .heart-particle{
+    position:fixed;
+    pointer-events:none;
+    font-size:22px;
+    z-index:1002;
+    animation:heart-burst 1.1s ease-out forwards;
+  }
+  @keyframes heart-burst{
+    0%{transform:translateY(0) scale(.6) rotate(0deg); opacity:1;}
+    100%{transform:translateY(-220px) scale(1.3) rotate(25deg); opacity:0;}
+  }
+  #lockscreen.unlock-fade{
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+
+  .lock-emoji{
+    font-size:44px; margin-bottom:6px;
+    animation:float 3s ease-in-out infinite;
+    display:inline-block;
+    transition:transform .3s ease;
+  }
+  .lock-emoji.unlock-pop{
+    animation:lock-open 1.4s ease forwards;
+  }
+  @keyframes lock-open{
+    0%{transform:rotate(0deg) scale(1);}
+    30%{transform:rotate(-18deg) scale(1.15);}
+    55%{transform:rotate(12deg) scale(1.22);}
+    75%{transform:rotate(-6deg) scale(1.25);}
+    100%{transform:rotate(0deg) scale(1.15);}
+  }
+  .lock-emoji.angry-shake{
+    animation:angry-shake .9s ease;
+  }
+  @keyframes angry-shake{
+    0%,100%{transform:rotate(0deg) scale(1);}
+    20%{transform:rotate(-12deg) scale(1.1);}
+    40%{transform:rotate(10deg) scale(1.1);}
+    60%{transform:rotate(-8deg) scale(1.08);}
+    80%{transform:rotate(6deg) scale(1.05);}
+  }
+
+  /* AMBIENT FLOATING HEARTS ON LOCKSCREEN */
+  .ambient-heart{
+    position:fixed;
+    bottom:-40px;
+    pointer-events:none;
+    z-index:998;
+    animation:ambient-float linear forwards;
+    opacity:0;
+  }
+  @keyframes ambient-float{
+    0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+    10%{opacity:.85;}
+    85%{opacity:.7;}
+    100%{transform:translateY(-110vh) translateX(var(--drift)) rotate(var(--spin)); opacity:0;}
+  }
+
+  /* TYPING STAR SPARKLE */
+  .type-star{
+    position:fixed;
+    pointer-events:none;
+    z-index:1002;
+    animation:type-star-pop .8s ease-out forwards;
+  }
+  @keyframes type-star-pop{
+    0%{transform:translateY(0) scale(.4) rotate(0deg); opacity:1;}
+    100%{transform:translateY(-46px) scale(1.1) rotate(50deg); opacity:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockscreen">
+  <div class="lock-card" id="lock-card">
+    <div class="lock-emoji" id="lock-emoji">🔒</div>
+    <div class="lock-title" id="lock-title">ใส่รหัสเพื่อเปิดเซอร์ไพรส์</div>
+    <div class="lock-desc" id="lock-desc">คำใบ้: วันสำคัญของเราสองคน</div>
+    <input type="text" id="lock-input" class="lock-input" placeholder="xx/xx/xxxx" maxlength="10" inputmode="numeric">
+    <div class="lock-hint" id="lock-hint-text">กรอกตามรูปแบบ xx/xx/xxxx (วัน/เดือน/ปี พ.ศ.)</div>
+    <div class="lock-error" id="lock-error"></div>
+    <div class="lock-btn-row" id="lock-btn-row">
+      <button class="lock-submit" id="lock-submit">จิ้มเพื่อส่งเลยยย 💌</button>
+      <button class="lock-reveal" id="lock-reveal">ดูเฉลย</button>
+    </div>
+    <div class="lock-success" id="lock-success">
+      <div class="success-text">ปลดล็อกสำเร็จ! 🎉</div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content">
+<div class="bg-blob blob1"></div>
+<div class="bg-blob blob2"></div>
+<div class="bg-blob blob3"></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="eyebrow">เซอร์ไพรส์เล็กๆ จาก Phone to Gamsai 💕💕</div>
+  <h1 class="title">สุขสันต์วันครบรอบ<br>ของเรานะที่รัก</h1>
+  <p class="subtitle">หน้านี้เขียนขึ้นมาเพื่อเธอคนเดียว เวลาข้างล่างนี้คือเวลาครบรอบของเรา</p>
+  <div class="hearts-row">💗 🧡 💛 💚 💜</div>
+
+  <div class="counter-card">
+    <div class="counter-item"><div class="counter-num" id="c-years">0</div><div class="counter-label">ปี</div></div>
+    <div class="counter-item"><div class="counter-num" id="c-months">0</div><div class="counter-label">เดือน</div></div>
+    <div class="counter-item"><div class="counter-num" id="c-days">0</div><div class="counter-label">วัน</div></div>
+    <div class="counter-item"><div class="counter-num" id="c-hours">0</div><div class="counter-label">ชม.</div></div>
+    <div class="counter-item"><div class="counter-num" id="c-minutes">0</div><div class="counter-label">นาที</div></div>
+    <div class="counter-item"><div class="counter-num" id="c-seconds">0</div><div class="counter-label">วินาที</div></div>
+  </div>
+  <div class="scroll-hint">เลื่อนลงเพื่อดูต่อ ↓</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-eyebrow">Our Memories</div>
+  <h2 class="section-title">อัลบั้มความทรงจำ 📸</h2>
+  <p class="section-desc">แตะที่รูปเพื่อดูช่วงเวลาดีๆ ของเรา — ใส่รูปจริงของคุณแทนกรอบสีได้เลย</p>
+  <div class="gallery-grid">
+    <div class="polaroid" data-album="meet"><div class="tape"></div><div class="frame"><img src="e/e15.jpg" alt="" style="display:block;"></div><div class="cap">รวมเหตุการณ์ของเรา</div></div>
+    <div class="polaroid" data-album="date"><div class="tape"></div><div class="frame"><img src="f/f9.jpg" alt="" style="display:block;"></div><div class="cap">ภาพรวมของอร่อยของเรา</div></div>
+    <div class="polaroid" data-album="trip"><div class="tape"></div><div class="frame"><img src="t/t3.jpg" alt="" style="display:block;"></div><div class="cap">ทริปที่ไม่มีวันลืม</div></div>
+    <div class="polaroid" data-album="cute"><div class="tape"></div><div class="frame"><img src="n/n41.jpg" alt="" style="display:block;"></div><div class="cap">แฟนใครไม่รู้น่ารักจัง</div></div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="section-eyebrow">A Little Note</div>
+  <h2 class="section-title">จดหมายถึง Baby</h2>
+  <div class="letter-card">
+    <p class="letter-body" id="letter-text">จ้ำหม้ำาาา
+
+ขอบคุณที่อยู่เคียงข้างกันมาตลอด ขอบคุณสำหรับทุกเสียงหัวเราะ ทุกกำลังใจ และทุกวันธรรมดาที่กลายเป็นวันพิเศษเพราะมีเธออยู่ด้วย
+
+แต่ละวันที่ผ่านไปด้วยกัน ทำให้รู้สึกว่าเราโชคดีแค่ไหนที่ได้เจอกัน หวังว่าเราจะมีความทรงจำดีๆ แบบนี้ไปอีกนานๆ นะ
+
+รักเธอที่สุดเลย 💕</p>
+    <div class="letter-sign">— จากใจคนที่รักเธอ</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section id="footer">
+  <div class="footer-emoji">💖</div>
+  <h2 class="section-title" style="font-size:clamp(24px,5vw,32px)">รักเธอมากกว่าเมื่อวาน<br>และจะรักมากขึ้นทุกๆ วันนนนน</h2>
+  <p class="footer-note">จัดทำโดย Mr.Aphisit Singpia </p>
+</section>
+
+</div><!-- /#main-content -->
+
+<!-- ALBUM MODAL -->
+<div class="album-modal" id="albumModal">
+  <div class="album-topbar">
+    <div class="album-topbtns">
+      <button class="album-icon-btn wide" id="albumVolDownBtn" title="ลดเสียง">🔉－</button>
+      <button class="album-icon-btn" id="albumMuteBtn" title="เปิด/ปิดเสียง">🔊</button>
+      <button class="album-icon-btn wide" id="albumVolUpBtn" title="เพิ่มเสียง">🔊＋</button>
+      <button class="album-icon-btn" id="albumCloseBtn" title="ปิดอัลบัม">✕</button>
+    </div>
+  </div>
+  <div class="album-stage" id="albumStage">
+    <button class="album-nav-btn prev" id="albumPrevBtn">↑</button>
+    <div class="album-photo-card" id="albumPhotoCard" style="--tilt:-2deg;">
+      <div class="album-title-badge" id="albumTitle">อัลบัม</div>
+      <div class="album-photo-frame" id="albumPhotoFrame">
+        <div class="album-photo-emoji" id="albumPhotoEmoji">💐</div>
+        <img id="albumPhotoImg" src="" alt="">
+      </div>
+      <div class="album-photo-caption" id="albumPhotoCaption" contenteditable="true" spellcheck="false">รูปที่ 1</div>
+    </div>
+    <div class="album-caption-hint">แตะที่ข้อความเพื่อพิมพ์คำบรรยายของคุณเอง ✏️</div>
+    <button class="album-nav-btn next" id="albumNextBtn">↓</button>
+  </div>
+  <div class="album-dots" id="albumDots"></div>
+  <audio id="albumAudio" loop preload="none"></audio>
+</div>
+
+
+<script>
+  // ===== LOCK SCREEN LOGIC =====
+  const CORRECT_CODE = "01/10/1000"; // TODO: แก้เป็นวันที่จริงของคุณ (พ.ศ.)
+  const lockscreen = document.getElementById('lockscreen');
+  const lockCard = document.getElementById('lock-card');
+  const lockInput = document.getElementById('lock-input');
+  const lockSubmit = document.getElementById('lock-submit');
+  const lockError = document.getElementById('lock-error');
+  const lockReveal = document.getElementById('lock-reveal');
+  const lockBtnRow = document.getElementById('lock-btn-row');
+  const lockEmoji = document.getElementById('lock-emoji');
+
+  function normalize(str){
+    return str.trim().replace(/[.\-\s]/g, '/').replace(/\/+/g,'/');
+  }
+
+  function spawnHearts(){
+    const emojis = ['💕','💖','💗','🧡','💛','💜','✨'];
+    const count = 14;
+    for(let i=0; i<count; i++){
+      const heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      const cardBox = lockCard.getBoundingClientRect();
+      const startX = cardBox.left + Math.random()*cardBox.width;
+      const startY = cardBox.top + cardBox.height*0.4;
+      heart.style.left = startX + 'px';
+      heart.style.top = startY + 'px';
+      heart.style.animationDelay = (Math.random()*0.3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1400);
+    }
+  }
+
+  function tryUnlock(){
+    const val = normalize(lockInput.value);
+    if(val === CORRECT_CODE){
+      lockCard.classList.add('unlocking');
+      lockEmoji.textContent = '🔓';
+      lockEmoji.classList.remove('angry-shake');
+      lockEmoji.classList.add('unlock-pop');
+      lockInput.style.display = 'none';
+      document.getElementById('lock-hint-text').style.display = 'none';
+      lockError.textContent = '';
+      lockBtnRow.style.display = 'none';
+      document.getElementById('lock-title').style.display = 'none';
+      document.getElementById('lock-desc').style.display = 'none';
+      document.getElementById('lock-success').classList.add('show');
+      spawnHearts();
+      setTimeout(spawnHearts, 350);
+      setTimeout(() => {
+        lockscreen.classList.add('unlock-fade');
+        lockscreen.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        clearInterval(ambientTimer);
+      }, 1100);
+    } else {
+      lockError.textContent = "วันครบรอบยังจำไม่ได้ 😤😤😤";
+      lockCard.classList.remove('shake');
+      void lockCard.offsetWidth;
+      lockCard.classList.add('shake');
+
+      lockEmoji.textContent = '😠';
+      lockEmoji.classList.remove('angry-shake');
+      void lockEmoji.offsetWidth;
+      lockEmoji.classList.add('angry-shake');
+      setTimeout(() => {
+        lockEmoji.textContent = '🔒';
+        lockEmoji.classList.remove('angry-shake');
+      }, 900);
+    }
+  }
+
+  lockSubmit.addEventListener('click', tryUnlock);
+  lockInput.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') tryUnlock();
+  });
+
+  // "เฉลย" button dodges every click/tap, avoiding the card (input + text)
+  function rectsOverlap(a, b){
+    return !(a.right < b.left || a.left > b.right || a.bottom < b.top || a.top > b.bottom);
+  }
+
+  function dodgeReveal(){
+    lockReveal.classList.add('dodging');
+    const margin = 16;
+    const btnW = lockReveal.offsetWidth || 80;
+    const btnH = lockReveal.offsetHeight || 44;
+    const maxX = Math.max(margin, window.innerWidth - btnW - margin);
+    const maxY = Math.max(margin, window.innerHeight - btnH - margin);
+    const cardBox = lockCard.getBoundingClientRect();
+    const safeZone = {
+      left: cardBox.left - 20,
+      right: cardBox.right + 20,
+      top: cardBox.top - 20,
+      bottom: cardBox.bottom + 20
+    };
+
+    let randX, randY, attempts = 0;
+    let candidate;
+    do {
+      randX = margin + Math.floor(Math.random() * (maxX - margin));
+      randY = margin + Math.floor(Math.random() * (maxY - margin));
+      candidate = { left: randX, right: randX + btnW, top: randY, bottom: randY + btnH };
+      attempts++;
+    } while (rectsOverlap(candidate, safeZone) && attempts < 30);
+
+    lockReveal.style.left = randX + 'px';
+    lockReveal.style.top = randY + 'px';
+  }
+
+  lockReveal.addEventListener('mouseenter', dodgeReveal);
+  lockReveal.addEventListener('click', (e) => {
+    e.preventDefault();
+    dodgeReveal();
+  });
+  lockReveal.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    dodgeReveal();
+  });
+
+  // lock scroll while lockscreen visible
+  document.body.style.overflow = 'hidden';
+
+  // ===== AMBIENT FLOATING HEARTS + STARS (background, continuous) =====
+  const ambientEmojis = ['💕','💖','💗','🧡','💛','💜','⭐','✨','🌟'];
+
+  function spawnAmbient(){
+    if(lockscreen.classList.contains('hidden')) return;
+    const el = document.createElement('div');
+    el.className = 'ambient-heart';
+    el.textContent = ambientEmojis[Math.floor(Math.random()*ambientEmojis.length)];
+    const size = 16 + Math.random()*16;
+    el.style.fontSize = size + 'px';
+    el.style.left = (Math.random()*94 + 2) + 'vw';
+    el.style.setProperty('--drift', (Math.random()*80 - 40) + 'px');
+    el.style.setProperty('--spin', (Math.random()*50 - 25) + 'deg');
+    const duration = 6 + Math.random()*5;
+    el.style.animationDuration = duration + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), duration * 1000 + 200);
+  }
+
+  let ambientTimer = setInterval(spawnAmbient, 550);
+
+  // ===== SPARKLE STARS WHILE TYPING =====
+  function spawnTypeStar(){
+    const inputBox = lockInput.getBoundingClientRect();
+    const star = document.createElement('div');
+    star.className = 'type-star';
+    star.textContent = ['✨','⭐','🌟'][Math.floor(Math.random()*3)];
+    star.style.fontSize = (12 + Math.random()*8) + 'px';
+    const x = inputBox.left + Math.random()*inputBox.width;
+    const y = inputBox.top + inputBox.height*0.5;
+    star.style.left = x + 'px';
+    star.style.top = y + 'px';
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 850);
+  }
+
+  lockInput.addEventListener('input', spawnTypeStar);
+</script>
+
+<script>
+  // ตั้งวันที่เริ่มคบกัน (ปี, เดือน(0-11), วัน)
+  const startDate = new Date(2023, 11, 25); // 25 ธันวาคม 2566
+
+  function updateCounter(){
+    const now = new Date();
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+    if(days < 0){
+      months -= 1;
+      const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if(months < 0){
+      years -= 1;
+      months += 12;
+    }
+
+    const diffMs = now - startDate;
+    const totalSeconds = Math.max(0, Math.floor(diffMs / 1000));
+    const hours = Math.floor(totalSeconds / 3600) % 24;
+    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const seconds = totalSeconds % 60;
+
+    document.getElementById('c-years').textContent = years;
+    document.getElementById('c-months').textContent = months;
+    document.getElementById('c-days').textContent = days;
+    document.getElementById('c-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('c-minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('c-seconds').textContent = String(seconds).padStart(2,'0');
+  }
+  updateCounter();
+  setInterval(updateCounter, 1000);
+
+  // ===== ALBUM MODAL =====
+  const albumPalette = [
+    ['#FFD3E0','#FFB6D9'], ['#FFE9B0','#FFC978'], ['#C9F5E8','#8FE6CE'],
+    ['#E3D3FF','#C5A6FF'], ['#FFD8B0','#FFB88A'], ['#FFC9DE','#FF9FC7']
+  ];
+  const themedEmojis = {
+    meet: ['🌸','🌷','🌹','🌺','💐','🌻','🌼','🍃'],
+    date: ['🍰','🍕','🍜','🍓','🍩','🍔','🧁','🍭'],
+    trip: ['🌊','🐚','🐠','⭐','🏖️','🐬','🦀','⛵'],
+    cute: ['💕','💖','😍','🥰','💘','😘','💗','✨']
+  };
+
+  function makePlaceholderPhotos(count, theme){
+    const set = themedEmojis[theme] || ['💐','🎉','📷','✨'];
+    return Array.from({length: count}, (_, i) => ({
+      src: '',
+      emoji: set[i % set.length],
+      caption: `รูปที่ ${i + 1}`
+    }));
+  }
+
+  const albums = {
+    meet: {
+      title: '🌸 รวมเหตุการณ์ของเรา',
+      music: 'first-meet.mp3',
+      photos: [
+        { src: 'e/e1.jpg', emoji: '🌳', caption: 'มองท้องฟ้าใต้ต้นไม้ วันสบายๆ ด้วยกัน' },
+        { src: 'e/e2.jpg', emoji: '🙃', caption: 'เซลฟี่กลับหัวสนุกๆ' },
+        { src: 'e/e3.jpg', emoji: '🥤', caption: 'หน้าบูดกับเพื่อนที่ร้านน้ำ' },
+        { src: 'e/e4.jpg', emoji: '🖼️', caption: 'เดินดูของตกแต่งด้วยกัน' },
+        { src: 'e/e5.jpg', emoji: '😝', caption: 'เซลฟี่หน้าตลกในชุดมหาลัย' },
+        { src: 'e/e6.jpg', emoji: '🌿', caption: 'นั่งมองทะเลสาบด้วยกันที่มหาลัย' },
+        { src: 'e/e7.jpg', emoji: '🤳', caption: 'เซลฟี่หน้าใกล้ๆ สนุกๆ' },
+        { src: 'e/e8.jpg', emoji: '💬', caption: 'นั่งคุยกันข้างร้านน้ำ' },
+        { src: 'e/e9.jpg', emoji: '🎬', caption: 'โชว์ตั๋วหนังคู่กัน' },
+        { src: 'e/e10.jpg', emoji: '🧋', caption: 'จิบชานมด้วยกันกลางแจ้ง' },
+        { src: 'e/e11.jpg', emoji: '📸', caption: 'โพลารอยด์ แก้มชนแก้ม' },
+        { src: 'e/e12.jpg', emoji: '🪵', caption: 'นั่งด้วยกันใต้หลังคาไม้เก่าๆ' },
+        { src: 'e/e13.jpg', emoji: '💐', caption: 'ช่อดอกไม้ Love You' },
+        { src: 'e/e14.jpg', emoji: '🏫', caption: 'เซลฟี่ในชุดนักเรียนที่โรงยิม' },
+        { src: 'e/e15.jpg', emoji: '🎨', caption: 'งานฝีมือลายดอกไม้สีแดง' },
+        { src: 'e/e16.jpg', emoji: '🌻', caption: 'ดอกทานตะวันประดิษฐ์ด้วยกัน' },
+        { src: 'e/e17.jpg', emoji: '🐼', caption: 'พวงกุญแจตุ๊กตาแพนด้าตัวโปรด' },
+        { src: 'e/e18.jpg', emoji: '🍓', caption: 'ตุ๊กตากระต่ายสตรอว์เบอร์รีน่ารักๆ' },
+        { src: 'e/e19.jpg', emoji: '🌸', caption: 'ผมสยายริมบึงบัว' },
+        { src: 'e/e20.jpg', emoji: '🐧', caption: 'ตุ๊กตานกเพนกวินตัวป่วนกลางแจ้ง' },
+        { src: 'e/e21.jpg', emoji: '🌙', caption: 'เซลฟี่มืดๆ ใกล้ชิดกันยามค่ำคืน' },
+        { src: 'e/e22.jpg', emoji: '🎓', caption: 'วันรับใบประกาศ ถือดอกไม้ให้กัน' },
+        { src: 'e/e23.jpg', emoji: '🤗', caption: 'กอดกันในชุดนักเรียน ภาพโพลารอยด์' },
+        { src: 'e/e24.jpg', emoji: '🚗', caption: 'เซลฟี่ในรถระหว่างเดินทางด้วยกัน' }
+      ],
+      floatEmojis: themedEmojis.meet,
+      bg: 'linear-gradient(160deg,#FFE6F1,#F1FFEA 50%,#FFF8F0 100%)'
+    },
+    date: {
+      title: '🍰 มื้ออร่อยของเรา',
+      music: 'first-date.mp3',
+      photos: [
+        { src: 'f/f1.jpg', emoji: '🍜', caption: 'ตีนไก่แซ่บกับก๋วยเตี๋ยวเนื้อ มื้อจัดหนัก' },
+        { src: 'f/f2.jpg', emoji: '🍡', caption: 'ขนมหวานยามค่ำคืนที่ตลาดนัด' },
+        { src: 'f/f3.jpg', emoji: '🦐', caption: 'กุ้งเผาสดๆ ริมทาง อร่อยจนต้องตั้งใจแกะ' },
+        { src: 'f/f4.jpg', emoji: '🌶️', caption: 'กุ้งแช่น้ำปลากับส้มตำแซ่บๆ' },
+        { src: 'f/f5.jpg', emoji: '🦐', caption: 'กุ้งแช่น้ำปลา เรียงสวยจนไม่อยากกิน' },
+        { src: 'f/f6.jpg', emoji: '🦀', caption: 'อาหารทะเลจัดเต็มโต๊ะ กินกันจนพุงกาง' },
+        { src: 'f/f7.jpg', emoji: '🍦', caption: 'ไอศกรีมบลิซซาร์ดมินต์ช็อกโกแลตชิพคู่กัน' },
+        { src: 'f/f8.jpg', emoji: '🍗', caption: 'มื้อไก่ทอดง่ายๆ แต่ฟินทุกครั้ง' },
+        { src: 'f/f9.jpg', emoji: '🍔', caption: 'จานยักษ์ เบอร์เกอร์บันดำ + เฟรนช์ฟรายส์ชีสล้น' },
+        { src: 'f/f10.jpg', emoji: '🍲', caption: 'หม้อสุกี้ทะเลรวม กินกันจนอิ่มแปล้' },
+        { src: 'f/f11.jpg', emoji: '🍜', caption: 'ตีนไก่ต้มยาสมุนไพร คู่กันสองถ้วย' },
+        { src: 'f/f12.jpg', emoji: '🍲', caption: 'สุกี้หมูรวมมิตร มื้อกลางแจ้งชิลๆ' },
+        { src: 'f/f13.jpg', emoji: '🌃', caption: 'มื้อดึกที่ตลาดนัด จัดเต็มทุกจาน' },
+        { src: 'f/f14.jpg', emoji: '🍛', caption: 'ข้าวซอยเนื้อกับข้าวซอยไก่ คู่กันครบเซ็ต' }
+      ],
+      floatEmojis: themedEmojis.date,
+      bg: 'linear-gradient(160deg,#FFE8D1,#FFF3DE 50%,#FFF8F0 100%)'
+    },
+    trip: {
+      title: '🌊 ทริปทะเลที่ไม่มีวันลืม',
+      music: 'trip.mp3',
+      photos: [
+        { src: 't/t1.jpg', emoji: '🚉', caption: 'ชานชาลาสถานีหัวหิน เงียบๆ รอรถไฟด้วยกัน' },
+        { src: 't/t2.jpg', emoji: '🌴', caption: 'วิวทะเลหัวหินมองจากเขาเตี้ยๆ' },
+        { src: 't/t3.jpg', emoji: '🌅', caption: 'ฟ้ายามเย็นสีฟ้าเข้มริมทะเล' },
+        { src: 't/t4.jpg', emoji: '🥰', caption: 'เซลฟี่แก้มชนแก้มริมชายหาด' },
+        { src: 't/t5.jpg', emoji: '🌈', caption: 'สายรุ้งพาดฟ้าเหนือโขดหิน' },
+        { src: 't/t6.jpg', emoji: '📸', caption: 'ป้ายสถานีหัวหิน สถานที่ต้องถ่ายรูปคู่' },
+        { src: 't/t7.jpg', emoji: '🧳', caption: 'ลากกระเป๋ามาถ่ายรูปกับป้ายหัวหินด้วยกัน' },
+        { src: 't/t8.jpg', emoji: '🚶', caption: 'เดินลากกระเป๋าออกไปเที่ยวต่อ' },
+        { src: 't/t9.jpg', emoji: '🌃', caption: 'เย็นนี้ไปเดินตลาดนัดกันเถอะ' }
+      ],
+      floatEmojis: themedEmojis.trip,
+      bg: 'linear-gradient(160deg,#CFF3FF,#E8FBFF 50%,#FFF8F0 100%)'
+    },
+    cute: {
+      title: '💕 แฟนใครไม่รู้น่ารักจัง',
+      music: 'cute-song.mp3',
+      photos: [
+        { src: 'n/n1.jpg', emoji: '⭐', caption: 'เซลฟี่นอนเล่น ประดับดาวบนผมสีฟ้า' },
+        { src: 'n/n2.jpg', emoji: '⚽', caption: 'ยิ้มหวานในเสื้อบอลทีมโปรด' },
+        { src: 'n/n3.jpg', emoji: '✨', caption: 'ชุดนอนลายจุด ฟิลเตอร์กากเพชร หัวใจแก้มฟรุ้งฟริ้ง' },
+        { src: 'n/n4.jpg', emoji: '❤️', caption: 'เซลฟี่ในรถ เสื้อยืดหัวใจแดงกับมาส์กสีขาว' },
+        { src: 'n/n5.jpg', emoji: '🔬', caption: 'จ้องมองน้ำเขียวในพิพิธภัณฑ์อย่างตั้งใจ' },
+        { src: 'n/n6.jpg', emoji: '🍂', caption: 'ชุดลายจุดสีน้ำตาล ยืนกลางใบไม้ร่วง' },
+        { src: 'n/n7.jpg', emoji: '🌿', caption: 'ถักเปียนั่งเล่นบนสนามหญ้า มุมมองจากด้านบน' },
+        { src: 'n/n8.jpg', emoji: '🎒', caption: 'เดินคล้องกระเป๋าเป้ในชุดนักเรียน ริบบิ้นสีฟ้าโบกสะบัด' },
+        { src: 'n/n9.jpg', emoji: '🌱', caption: 'นั่งเล่นบนสนามหญ้า แอบซ่อนหน้าใต้ผม' },
+        { src: 'n/n10.jpg', emoji: '😷', caption: 'ปรับหน้ากากอนามัยกลางสนามหญ้าเขียวขจี' },
+        { src: 'n/n11.jpg', emoji: '👓', caption: 'เซลฟี่เอียงข้าง แว่นตาและมาส์กเข้าชุด' },
+        { src: 'n/n12.jpg', emoji: '🌊', caption: 'นั่งยองริมคลื่นทะเล เสื้อคลุมโปร่งสีขาว' },
+        { src: 'n/n13.jpg', emoji: '💗', caption: 'มิเรอร์เซลฟี่เสื้อครอปชมพู ข้อความ She loves me' },
+        { src: 'n/n14.jpg', emoji: '🌳', caption: 'ยิ้มหวานใต้ต้นไม้ ชุดขาวแขนพอง' },
+        { src: 'n/n15.jpg', emoji: '✨', caption: 'ฟิลเตอร์กากเพชร ผ้าพันคอถักสีฟ้า' },
+        { src: 'n/n16.jpg', emoji: '🧢', caption: 'เซลฟี่กลับหัวใต้ท้องฟ้าโปร่ง สวมหมวกแก๊ป' },
+        { src: 'n/n17.jpg', emoji: '😁', caption: 'ยิ้มแฉ่งกลับหัว โชว์ฟันสดใส' },
+        { src: 'n/n18.jpg', emoji: '😯', caption: 'สีหน้างงๆ ในห้องสีฟ้า' },
+        { src: 'n/n19.jpg', emoji: '🐱', caption: 'ทำปากจู๋กับฟิลเตอร์แมวส้ม' },
+        { src: 'n/n20.jpg', emoji: '😤', caption: 'ถักผมเปียคู่ ทำหน้าบึ้งน่ารักๆ' },
+        { src: 'n/n21.jpg', emoji: '🎬', caption: 'นั่งเล่นเก้าอี้โรงหนัง เสื้อบอลบราซิลตัวโปรด' },
+        { src: 'n/n22.jpg', emoji: '💋', caption: 'เซลฟี่ใกล้ กระซิบส่งจูบผ่านปลายนิ้ว' },
+        { src: 'n/n23.jpg', emoji: '✨', caption: 'ฟิลเตอร์กากเพชร ชุดนอนลายทางสีฟ้า' },
+        { src: 'n/n24.jpg', emoji: '🎀', caption: 'เดินเล่นในชุดนักเรียน มาส์กคล้องคาง' },
+        { src: 'n/n25.jpg', emoji: '🌾', caption: 'ยิ้มกุมแก้มกลางสนามหญ้า ชุดนักเรียนริบบิ้นดำ' },
+        { src: 'n/n26.jpg', emoji: '🐱', caption: 'นอนเล่นทำปากจู๋ ชุดนอนคิตตี้สีชมพู' },
+        { src: 'n/n27.jpg', emoji: '✨', caption: 'ฟิลเตอร์กากเพชร เสื้อบอลกลางตลาดนัดยามค่ำ' },
+        { src: 'n/n28.jpg', emoji: '🐰', caption: 'สวมหูกระต่าย แอบยิ้มมุมปาก' },
+        { src: 'n/n29.jpg', emoji: '😝', caption: 'แลบลิ้นซนๆ หัวใจแก้มฟรุ้งฟริ้ง' },
+        { src: 'n/n30.jpg', emoji: '😗', caption: 'ทำปากยื่นในห้องมืดๆ' },
+        { src: 'n/n31.jpg', emoji: '🖤', caption: 'เซลฟี่เอียงข้าง สร้อยคอโชกเกอร์สีดำ' },
+        { src: 'n/n32.jpg', emoji: '🌸', caption: 'นั่งมองกล้อง หน้าโปสเตอร์ CAPRI' },
+        { src: 'n/n33.jpg', emoji: '😷', caption: 'ใส่มาส์ก เสื้อลาย Adidas สีน้ำเงิน' },
+        { src: 'n/n34.jpg', emoji: '💕', caption: 'ทำปากจู๋ หัวใจแก้มฟรุ้งฟริ้ง ชุดนอนคิตตี้' },
+        { src: 'n/n35.jpg', emoji: '💧', caption: 'ชี้ให้ดูน้ำตกเล็กๆ กลางสวนเขียวขจี' },
+        { src: 'n/n36.jpg', emoji: '🍫', caption: 'ดื่มช็อกโกแลตเย็นที่ร้าน Milk Bar Cafe' },
+        { src: 'n/n37.jpg', emoji: '✨', caption: 'ฟิลเตอร์กากเพชร ทำปากจู๋ หัวใจแก้มฟรุ้งฟริ้ง' },
+        { src: 'n/n38.jpg', emoji: '🤔', caption: 'จิ้มแก้มตัวเอง ทำหน้าสงสัย' },
+        { src: 'n/n39.jpg', emoji: '🐧', caption: 'จูบตุ๊กตาเพนกวินตัวโปรด' },
+        { src: 'n/n40.jpg', emoji: '😔', caption: 'สายตาเศร้าๆ ใต้แสงไฟสีน้ำเงิน' },
+        { src: 'n/n41.jpg', emoji: '🙈', caption: 'แอบยิ้มขี้อายผ่านช่องนิ้ว เสื้อไหมพรมสีชมพู' }
+      ],
+      floatEmojis: themedEmojis.cute,
+      bg: 'linear-gradient(160deg,#FFE1EC,#FFF0F5 50%,#FFF8F0 100%)'
+    }
+  };
+
+  const albumModal = document.getElementById('albumModal');
+  const albumTitle = document.getElementById('albumTitle');
+  const albumStage = document.getElementById('albumStage');
+  const albumPhotoCard = document.getElementById('albumPhotoCard');
+  const albumPhotoFrame = document.getElementById('albumPhotoFrame');
+  const albumPhotoEmoji = document.getElementById('albumPhotoEmoji');
+  const albumPhotoImg = document.getElementById('albumPhotoImg');
+  const albumPhotoCaption = document.getElementById('albumPhotoCaption');
+  const albumDots = document.getElementById('albumDots');
+  const albumPrevBtn = document.getElementById('albumPrevBtn');
+  const albumNextBtn = document.getElementById('albumNextBtn');
+  const albumCloseBtn = document.getElementById('albumCloseBtn');
+  const albumMuteBtn = document.getElementById('albumMuteBtn');
+  const albumVolDownBtn = document.getElementById('albumVolDownBtn');
+  const albumVolUpBtn = document.getElementById('albumVolUpBtn');
+  const albumAudio = document.getElementById('albumAudio');
+
+  let currentAlbumId = null;
+  let currentIndex = 0;
+  let albumHeartTimer = null;
+  let isMuted = false;
+  let currentVolume = 1;
+
+  function renderAlbumPhoto(){
+    const album = albums[currentAlbumId];
+    const photo = album.photos[currentIndex];
+    const colors = albumPalette[currentIndex % albumPalette.length];
+    albumPhotoFrame.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[1]})`;
+    const tilts = ['-2deg','2deg','-1.5deg','1.5deg','-2.5deg'];
+    albumPhotoCard.style.setProperty('--tilt', tilts[currentIndex % tilts.length]);
+
+    albumPhotoCard.style.animation = 'none';
+    void albumPhotoCard.offsetWidth;
+    albumPhotoCard.style.animation = '';
+
+    if(photo.src){
+      albumPhotoImg.src = photo.src;
+      albumPhotoImg.style.display = 'block';
+      albumPhotoEmoji.style.display = 'none';
+    } else {
+      albumPhotoImg.style.display = 'none';
+      albumPhotoEmoji.style.display = 'block';
+      albumPhotoEmoji.textContent = photo.emoji;
+    }
+    albumPhotoCaption.textContent = photo.caption;
+
+    const savedCaption = localStorage.getItem(`caption-${currentAlbumId}-${currentIndex}`);
+    if(savedCaption !== null){
+      albumPhotoCaption.textContent = savedCaption;
+    }
+
+    [...albumDots.children].forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function buildDots(){
+    const album = albums[currentAlbumId];
+    albumDots.innerHTML = '';
+    album.photos.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'album-dot' + (i === currentIndex ? ' active' : '');
+      dot.addEventListener('click', () => { currentIndex = i; renderAlbumPhoto(); });
+      albumDots.appendChild(dot);
+    });
+  }
+
+  function spawnAlbumHeart(){
+    if(!albumModal.classList.contains('show')) return;
+    const album = albums[currentAlbumId];
+    const el = document.createElement('div');
+    el.className = 'album-heart';
+    const items = (album && album.floatEmojis) ? album.floatEmojis : ['💕','💖','💗','⭐','✨'];
+    el.textContent = items[Math.floor(Math.random() * items.length)];
+    el.style.fontSize = (14 + Math.random() * 14) + 'px';
+    el.style.left = (Math.random() * 86 + 4) + '%';
+    el.style.setProperty('--drift', (Math.random() * 60 - 30) + 'px');
+    el.style.setProperty('--spin', (Math.random() * 40 - 20) + 'deg');
+    const duration = 4 + Math.random() * 3;
+    el.style.animationDuration = duration + 's';
+    albumStage.appendChild(el);
+    setTimeout(() => el.remove(), duration * 1000 + 200);
+  }
+
+  function openAlbum(id){
+    currentAlbumId = id;
+    currentIndex = 0;
+    const album = albums[id];
+    albumTitle.textContent = album.title;
+    albumModal.style.background = album.bg;
+    buildDots();
+    renderAlbumPhoto();
+    albumModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    if(album.music){
+      albumAudio.src = album.music;
+      albumAudio.muted = isMuted;
+      albumAudio.volume = currentVolume;
+      albumAudio.currentTime = 0;
+      albumAudio.play().catch(() => {});
+      albumMuteBtn.style.display = 'flex';
+      albumVolDownBtn.style.display = 'flex';
+      albumVolUpBtn.style.display = 'flex';
+    } else {
+      albumAudio.removeAttribute('src');
+      albumMuteBtn.style.display = 'none';
+      albumVolDownBtn.style.display = 'none';
+      albumVolUpBtn.style.display = 'none';
+    }
+
+    clearInterval(albumHeartTimer);
+    albumHeartTimer = setInterval(spawnAlbumHeart, 600);
+  }
+
+  function closeAlbum(){
+    albumModal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+    albumAudio.pause();
+    clearInterval(albumHeartTimer);
+  }
+
+  function nextPhoto(){
+    const album = albums[currentAlbumId];
+    currentIndex = (currentIndex + 1) % album.photos.length;
+    renderAlbumPhoto();
+  }
+  function prevPhoto(){
+    const album = albums[currentAlbumId];
+    currentIndex = (currentIndex - 1 + album.photos.length) % album.photos.length;
+    renderAlbumPhoto();
+  }
+
+  albumPhotoCaption.addEventListener('blur', () => {
+    localStorage.setItem(`caption-${currentAlbumId}-${currentIndex}`, albumPhotoCaption.textContent.trim());
+  });
+  albumPhotoCaption.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      albumPhotoCaption.blur();
+    }
+  });
+
+  document.querySelectorAll('.polaroid[data-album]').forEach(card => {
+    card.addEventListener('click', () => openAlbum(card.dataset.album));
+  });
+  albumCloseBtn.addEventListener('click', closeAlbum);
+  albumNextBtn.addEventListener('click', nextPhoto);
+  albumPrevBtn.addEventListener('click', prevPhoto);
+  albumMuteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    albumAudio.muted = isMuted;
+    albumMuteBtn.textContent = isMuted ? '🔇' : '🔊';
+  });
+  albumVolDownBtn.addEventListener('click', () => {
+    currentVolume = Math.max(0, Math.round((currentVolume - 0.1) * 10) / 10);
+    albumAudio.volume = currentVolume;
+    if(currentVolume === 0){
+      isMuted = true;
+      albumAudio.muted = true;
+      albumMuteBtn.textContent = '🔇';
+    }
+  });
+  albumVolUpBtn.addEventListener('click', () => {
+    currentVolume = Math.min(1, Math.round((currentVolume + 0.1) * 10) / 10);
+    albumAudio.volume = currentVolume;
+    if(currentVolume > 0 && isMuted){
+      isMuted = false;
+      albumAudio.muted = false;
+      albumMuteBtn.textContent = '🔊';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if(!albumModal.classList.contains('show')) return;
+    if(document.activeElement === albumPhotoCaption) return;
+    if(e.key === 'ArrowDown') nextPhoto();
+    if(e.key === 'ArrowUp') prevPhoto();
+    if(e.key === 'Escape') closeAlbum();
+  });
+
+  // swipe support (vertical: swipe up = next, swipe down = prev)
+  let touchStartY = 0;
+  albumStage.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  albumStage.addEventListener('touchend', (e) => {
+    const diff = touchStartY - e.changedTouches[0].clientY;
+    if(diff > 50) nextPhoto();
+    else if(diff < -50) prevPhoto();
+  }, { passive: true });
+</script>
+</body>
+</html>
